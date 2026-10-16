@@ -8,6 +8,6 @@ import (
 func main() {
 	t := time.Now()
 	fmt.Printf("time.Now(): %v\n", t)
-	t2 := time.Now().Weekday()
-	fmt.Printf("time.Now().Weekday(): %v\n", t2)
+	fmt.Printf("time.Now().Hour(): %v\n", t.Hour())
+	fmt.Printf("time.Now().Weekday(): %v\n", t.Weekday())
 }
