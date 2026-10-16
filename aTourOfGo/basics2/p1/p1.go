@@ -14,7 +14,7 @@ func main() {
 	r := []bool{true, false, true, true, false, true}
 	fmt.Println(r)
 
-	// s := []struct {
+	// s := []struct { --> Anonymous Struct
 	// 	i int
 	// 	b bool
 	// }{
