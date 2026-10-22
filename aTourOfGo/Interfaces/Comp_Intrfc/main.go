@@ -1,27 +1,28 @@
 package main
 
 import (
-	"math"
+
 )
 
 type Shape interface {
 	Area() float64
 }
 
+type Measurable interface {
+	Perimeter() float64
+}
+
+type Geometry interface {
+	Shape
+	Measurable
+}
+
 type Rectangle struct {
 	height, width float64
 }
 
-func (r Rectangle) Area() float64 {
-	return r.height * r.width
-}
-
-type Circle struct {
-	radius float64
-}
-
-func (c Circle) Area() float64 {
-	return math.Pi * c.radius * c.radius
+func (r Rectangle) Perimeter() float64 {
+	return 2 * (r.height + r.width)
 }
 
 func calculateArea(s Shape) float64 {
