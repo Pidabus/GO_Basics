@@ -1,7 +1,7 @@
 package main
 
 import (
-
+	"fmt"
 )
 
 type Shape interface {
@@ -21,13 +21,20 @@ type Rectangle struct {
 	height, width float64
 }
 
+func (r Rectangle) Area() float64 {
+	return r.height * r.width
+}
+
 func (r Rectangle) Perimeter() float64 {
 	return 2 * (r.height + r.width)
 }
 
-func calculateArea(s Shape) float64 {
-	return s.Area()
+func describeShape(g Geometry) {
+	fmt.Println("Area: ", g.Area())
+	fmt.Println("Perimeter: ", g.Perimeter())
 }
 
 func main() {
+	rect := Rectangle{5, 7}
+	describeShape(rect)
 }
