@@ -2,6 +2,7 @@ package main
 
 import (
 	"math"
+	"fmt"
 )
 
 type CalculationError struct {
@@ -22,5 +23,9 @@ func performCalculation(val float64) (float64, error) {
 }
 
 func main() {
+	x, err := performCalculation(5)
+	fmt.Println(x, err)
 
+	x, err = performCalculation(-3)
+	fmt.Println(x, err)
 }
