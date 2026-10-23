@@ -2,19 +2,22 @@ package main
 
 import "fmt"
 
-const spanish = "Spanish"
-const french = "French"
-const malay = "Malay"
-const englishHelloPrefix = "Hello, "
-const spanishHelloPrefix = "Hola, "
-const frenchHelloPrefix = "Bonjour, "
-const malayHelloPrefix = "Apa Khabar Bossku, "
+const (
+	spanish = "Spanish"
+	french  = "French"
+	malay   = "Malay"
+
+	englishHelloPrefix = "Hello, "
+	spanishHelloPrefix = "Hola, "
+	frenchHelloPrefix  = "Bonjour, "
+	malayHelloPrefix   = "Apa Khabar Bossku, "
+)
 
 func Hello(name string, language string) string {
 	if name == "" {
 		name = "World"
 	}
-	
+
 	prefix := englishHelloPrefix
 
 	switch language {
