@@ -2,6 +2,7 @@ package main
 
 import (
 	"testing"
+	"errors"
 )
 
 func TestSearch(t *testing.T) {
@@ -15,14 +16,13 @@ func TestSearch(t *testing.T) {
 	})
 
 	t.Run("unknown word", func(t *testing.T) {
-		_, err := dictionary.Search("unknown")
-		want := "could not find the word you were looking for"
+		_, got := dictionary.Search("unknown")
 
-		if err == nil {
+		if got == nil {
 			t.Fatal("expected to get an error.")
 		}
 
-		assertStrings(t, err.Error(), want)
+		assertError(t, got, ErrNotFound)
 	})
 }
 
@@ -31,5 +31,13 @@ func assertStrings(t testing.TB, got, want string) {
 
 	if got != want {
 		t.Errorf("got %q want %q given, %q", got, want, "test")
+	}
+}
+
+func assertError(t testing.TB, got, want error) {
+	t.Helper()
+
+	if !errors.Is(got, want) {
+		t.Errorf("got %q want %q given", got, want)
 	}
 }
