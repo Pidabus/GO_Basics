@@ -5,6 +5,7 @@ import (
 	"testing"
 )
 
+// Assert Helper functions 
 func assertStrings(t testing.TB, got, want string) {
 	t.Helper()
 
@@ -31,6 +32,7 @@ func assertDefinition(t testing.TB, dictionary Dictionary, word, definition stri
 	assertStrings(t, got, definition)
 }
 
+//Test functions
 func TestSearch(t *testing.T) {
 	dictionary := Dictionary{"test": "this is just a test"}
 
@@ -73,4 +75,15 @@ func TestAdd(t *testing.T) {
 		assertError(t, err, ErrWordExists)
 		assertDefinition(t, dictionary, word, definition)
 	})
+}
+
+func TestUpdate(t *testing.T) {
+	word := "test"
+	definition := "this is just a test"
+	dictionary := Dictionary{word: definition}
+	newDefinition := "new definition"
+
+	dictionary.Update(word, newDefinition)
+
+	assertDefinition(t, dictionary, word, definition)
 }
